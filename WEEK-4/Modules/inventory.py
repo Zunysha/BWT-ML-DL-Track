@@ -46,10 +46,33 @@ class Inventory:
         today = datetime.now()
         near_expiry_items = [item for item in self.food_items if (item.expiry_date - today).days <= days_threshold]
         return near_expiry_items
+    def __iter__(self):
+        """Iterate over the food items in the inventory."""
+        return iter(self.food_items)
     
     def near_expiry_generator(self, days_threshold=7):
         today = datetime.now()
         for item in self.food_items:
             if (item.expiry_date - today).days <= days_threshold:
                 yield item  # Generator that yields items near expiry within the specified days threshold
+
+    def generate_report(self):
+        """Generate an inventory report."""
+        report = {
+            "total_items": len(self.food_items),
+            "near_expiry_items": self.get_near_expiry_items(),
+            "low_stock_items": [item for item in self.food_items if item.quantity < 5],
+            "category_summary": self.category_summary()
+        }
+        return report
+    
+    def category_summary(self):
+        """Generate a summary of quantities per category in the inventory."""
+        summary = {}
+        for item in self.food_items:
+            if item.category in summary:
+                summary[item.category] += item.quantity
+            else:
+                summary[item.category] = item.quantity
+        return summary
 
