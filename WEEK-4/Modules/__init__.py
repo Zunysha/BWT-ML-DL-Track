@@ -11,7 +11,9 @@ def display_menu():
     print("4. Search Food Item")
     print("5. Display Near Expiry Items")
     print("6. Display Near Expiry Items Using Generator")
-    print("7. Exit")
+    print("7. Generate Reports")
+    print("8. Iterate through Inventory Items (using __iter__)")
+    print("9. Exit")
 
 # Get food item details from the user
 def get_food_item_details():
@@ -102,9 +104,28 @@ def main():
 
 
         elif choice == '7':
+            # Generate and display an inventory report
+            report = inventory.generate_report()
+            print("Inventory Report:")
+            print(f"Total Items: {report['total_items']}")
+            print(f"Near Expiry Items: {[item.name for item in report['near_expiry_items']]}")
+            print(f"Low Stock Items: {[item.name for item in report['low_stock_items']]}")
+            print("Category Summary:")
+            for category, quantity in report['category_summary'].items():
+                print(f"  {category}: {quantity}")
+
+        elif choice == '8':
+            # Iterate through inventory items using __iter__() function
+            print("Inventory Items:")
+            for item in inventory.__iter__():
+                print(item)
+        
+        elif choice == '9':
+            # Exit the program
             print("Exiting the program.")
             break
-        
+
+
         else:
             print("Invalid choice. Please try again.")
 
