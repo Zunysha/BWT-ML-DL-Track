@@ -10,7 +10,8 @@ def display_menu():
     print("3. Delete Food Item")
     print("4. Search Food Item")
     print("5. Display Near Expiry Items")
-    print("6. Exit")
+    print("6. Display Near Expiry Items Using Generator")
+    print("7. Exit")
 
 # Get food item details from the user
 def get_food_item_details():
@@ -91,6 +92,16 @@ def main():
                 print("No near expiry items found.")
         
         elif choice == '6':
+            days_threshold = int(input("Enter the number of days for near expiry threshold: "))
+            near_expiry_items = list(inventory.near_expiry_generator(days_threshold))
+            if near_expiry_items:
+                for item in near_expiry_items:
+                    print(item)
+            else:
+                print("No near expiry items found using generator.")
+
+
+        elif choice == '7':
             print("Exiting the program.")
             break
         

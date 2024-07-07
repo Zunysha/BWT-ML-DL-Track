@@ -46,3 +46,10 @@ class Inventory:
         today = datetime.now()
         near_expiry_items = [item for item in self.food_items if (item.expiry_date - today).days <= days_threshold]
         return near_expiry_items
+    
+    def near_expiry_generator(self, days_threshold=7):
+        today = datetime.now()
+        for item in self.food_items:
+            if (item.expiry_date - today).days <= days_threshold:
+                yield item  # Generator that yields items near expiry within the specified days threshold
+
