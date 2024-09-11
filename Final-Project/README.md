@@ -1,5 +1,5 @@
 # COVID-19 Detection Project
-
+- open the __init__.py file and run the code in termianl. It will give you the link of API where the model will be running.
 ## About Dataset
 
 ### Context
