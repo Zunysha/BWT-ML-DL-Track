@@ -13,5 +13,6 @@ Email: zunysha.ch.n19@gmail.com
 - [Week-8 Tasks](https://github.com/Zunysha/BWT-ML-DL-Track/tree/main/WEEK-8)
 - [Week-9 Tasks](https://github.com/Zunysha/BWT-ML-DL-Track/tree/main/WEEK-9)
 - [Week-TEN Tasks](https://github.com/Zunysha/BWT-ML-DL-Track/tree/main/WEEK-TEN)
+- [FINAL PROJECT](https://github.com/Zunysha/BWT-ML-DL-Track/tree/main/Final-Project)
   
 
