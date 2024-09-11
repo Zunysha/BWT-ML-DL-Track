@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lung X-ray Classifier</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center mb-4">Lung X-ray Classifier</h1>
+                <form action="/" method="post" enctype="multipart/form-data" id="uploadForm">
+                    <div class="custom-file mb-3">
+                        <input type="file" class="custom-file-input" id="fileInput" name="file" accept=".png, .jpg, .jpeg" required>
+                        <label class="custom-file-label" for="fileInput">Choose file...</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Upload</button>
+                </form>
+                {% if message %}
+                    <div class="alert alert-info mt-3" role="alert">
+                        <strong>{{ message }}</strong>
+                    </div>
+                {% endif %}
+                <div id="imagePreview" style="display: none;">
+                    <img src="" id="previewImage" class="img-fluid mt-3" alt="Uploaded Image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function() {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('imagePreview').style.display = 'block';
+                    document.getElementById('previewImage').setAttribute('src', event.target.result);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                document.getElementById('imagePreview').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
